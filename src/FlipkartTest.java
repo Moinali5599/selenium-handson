@@ -28,8 +28,8 @@ public class FlipkartTest {
 		driver.get("https://www.flipkart.com/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
-		driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div/div[2]/div/form/div[1]/input")).sendKeys("8072795680");
-		driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div/div[2]/div/form/div[2]/input")).sendKeys("MoinAli@1999");
+		driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div/div[2]/div/form/div[1]/input")).sendKeys("mobile");
+		driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div/div[2]/div/form/div[2]/input")).sendKeys("password");
 		driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div/div[2]/div/form/div[4]/button")).click();
 		Thread.sleep(3000);
 	}
