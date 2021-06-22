@@ -74,10 +74,30 @@ public class FlipkartTest {
 	         System.out.println("Product is present in wishlist");
 	      } else {
 	         System.out.println("Product is not present in wishlist");
-	      }
-		
-		
+	      }	
 	}
-
-
+	/*** Add to cart and remove ***/
+	@Test
+	public void addToCart() throws Exception {
+		Actions act = new Actions(driver);
+		driver.findElement(searchBox).sendKeys("iphone 11");
+		driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[1]/div[1]/div[2]/div[2]/form/div/button")).click();
+		Thread.sleep(1000);
+		String productPageTab = driver.getWindowHandle();
+		driver.findElement(
+				By.xpath("//*[@id=\"container\"]/div/div[3]/div[1]/div[2]/div[2]/div/div/div/a/div[2]/div[1]/div[1]"))
+				.click();
+		Set<String> allTabs = driver.getWindowHandles();
+		for (String tab : allTabs) {
+			if (!tab.equalsIgnoreCase(productPageTab)) {
+				driver.switchTo().window(tab);
+				driver.findElement(
+						By.xpath("//*[@id=\"container\"]/div/div[3]/div[1]/div[1]/div[2]/div/ul/li[1]/button")).click();
+				driver.findElement(By
+						.xpath("//*[@id=\"container\"]/div/div[2]/div/div/div[1]/div/div[2]/div/div[2]/div[2]/div[2]"))
+						.click();
+				driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[1]/div/div[3]/div/div[2]")).click();
+			}
+		}
+	}
 }
